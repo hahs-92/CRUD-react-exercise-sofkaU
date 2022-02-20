@@ -2,9 +2,11 @@ import React from 'react'
 
 type UserTableProps = {
   users: User[]
+  deleteUser(id:string): void
+  editRow(user:User): void
 }
 
-export const UserTable: React.FC<UserTableProps> = ({users}) => {
+export const UserTable: React.FC<UserTableProps> = ({users, deleteUser, editRow}) => {
   return (
     <section>
       <div>
@@ -24,8 +26,8 @@ export const UserTable: React.FC<UserTableProps> = ({users}) => {
                 </article>
                 <article>{user.username}</article>
                 <article>
-                  <button>Edit</button>
-                  <button>Delete</button>
+                  <button onClick={() => editRow(user)}>Edit</button>
+                  <button onClick={() => deleteUser(user.id as string)}>Delete</button>
                 </article>
               </section>
             ))

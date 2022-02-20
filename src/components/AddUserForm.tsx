@@ -1,19 +1,37 @@
-
 import { useForm } from 'react-hook-form'
 
+type addUser =  (user: User) => void
+type editUser = (id: string, updateUser: User) => void
+
+
 type AddUserFormProps = {
-    addUser(user: User): void
+    addUser?: addUser
+    editUser?: editUser
+    title: string
+    currentUser: User
 }
 
 
-export const AddUserForm:React.FC<AddUserFormProps> = ({addUser}) => {
-    const { register,formState: { errors}, handleSubmit, reset } = useForm<User>()
+export const AddUserForm:React.FC<AddUserFormProps> = ({addUser, editUser,title, currentUser}) => {
+    const { register,formState: { errors}, handleSubmit, reset, setValue } = useForm<User>({
+        defaultValues: currentUser
+    })
+
+    setValue('id', currentUser.id)
+    setValue('name', currentUser.name)
+    setValue('username', currentUser.username)
+
 
     const onSubmit = (data:User) => {
-        //add a new user
-        addUser(data)
+        //add o edit user
+        data.id = currentUser.id
+        editUser && editUser(currentUser.id as string , data);
+
+        addUser && addUser(data)
+
         //clean fields
         reset()
+
     }
 
     return (
@@ -39,7 +57,7 @@ export const AddUserForm:React.FC<AddUserFormProps> = ({addUser}) => {
             />
             <span>{errors.username && "username is required"}</span>
 
-            <input type="submit" value="Add User"/>
+            <input type="submit" value={title}/>
         </form>
     )
 }
