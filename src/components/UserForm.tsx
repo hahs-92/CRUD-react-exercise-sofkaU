@@ -12,7 +12,7 @@ type AddUserFormProps = {
 }
 
 
-export const AddUserForm:React.FC<AddUserFormProps> = ({addUser, editUser,title, currentUser}) => {
+export const UserForm:React.FC<AddUserFormProps> = ({addUser, editUser,title, currentUser}) => {
     const { register,formState: { errors}, handleSubmit, reset, setValue } = useForm<User>({
         defaultValues: currentUser
     })

@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
 //components
 import { UserTable } from "./components/UserTable";
-import { AddUserForm } from './components/AddUserForm';
+import { UserForm } from './components/UserForm';
 //data
 import { data } from './data'
 
@@ -48,8 +48,8 @@ function App() {
           <h2>{editing ? "Edit User" : "Add User"}</h2>
           {
             !editing
-              ?  <AddUserForm addUser={ addUser}  title='Add user' currentUser={currentUser}/>
-              :  <AddUserForm editUser={ editUser} title='Edit user' currentUser={currentUser}/>
+              ?  <UserForm addUser={ addUser}  title='Add user' currentUser={currentUser}/>
+              :  <UserForm editUser={ editUser} title='Edit user' currentUser={currentUser}/>
           }
         </section>
         <section>
