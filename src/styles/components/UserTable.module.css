@@ -1,0 +1,26 @@
+
+.UserTable_Options {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+}
+
+.UserTable_Info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: .5rem 0;
+    font-size: 1.6rem;
+}
+
+
+.Actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Actions button {
+    font-size: 1.4rem;
+    width: 4.5rem;
+    height: 2.5rem;
+}

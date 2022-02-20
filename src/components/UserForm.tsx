@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form'
+//styles
+import style from '../styles/components/UserForm.module.css'
 
 type addUser =  (user: User) => void
 type editUser = (id: string, updateUser: User) => void
@@ -35,7 +37,7 @@ export const UserForm:React.FC<AddUserFormProps> = ({addUser, editUser,title, cu
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} >
+        <form onSubmit={handleSubmit(onSubmit)} className={style.UserForm} >
             <label htmlFor="name">Name:</label>
             <input
                 type="text"

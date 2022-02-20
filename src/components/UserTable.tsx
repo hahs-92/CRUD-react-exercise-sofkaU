@@ -1,4 +1,6 @@
 import React from 'react'
+//styles
+import style from '../styles/components/UserTable.module.css'
 
 type UserTableProps = {
   users: User[]
@@ -8,31 +10,38 @@ type UserTableProps = {
 
 export const UserTable: React.FC<UserTableProps> = ({users, deleteUser, editRow}) => {
   return (
-    <section>
-      <div>
-        <section>
-          <article>Name</article>
-          <article>Username</article>
-          <article>Actions</article>
-        </section>
+    <section className={style.UserTable}>
 
-        {
-          !users.length
-            ? <h2>No hay usuarios!</h2>
-            : users.map(user => (
-              <section key={user.id}>
-                <article>
-                  <h2>{user.name}</h2>
-                </article>
-                <article>{user.username}</article>
-                <article>
-                  <button onClick={() => editRow(user)}>Edit</button>
-                  <button onClick={() => deleteUser(user.id as string)}>Delete</button>
-                </article>
-              </section>
-            ))
-        }
-      </div>
+      <section className={style.UserTable_Options}>
+        <article>
+          <h3>Name</h3>
+        </article>
+        <article>
+          <h3>Username</h3>
+        </article>
+        <article>
+          <h3>Actions</h3>
+        </article>
+      </section>
+
+      {
+        !users.length
+          ? <h2>No hay usuarios!</h2>
+          : users.map(user => (
+            <section key={user.id} className={style.UserTable_Info}>
+              <article>
+                <h2>{user.name}</h2>
+              </article>
+              <article>
+                <h2>{user.username}</h2>
+              </article>
+              <article className={style.Actions}>
+                <button onClick={() => editRow(user)}>Edit</button>
+                <button onClick={() => deleteUser(user.id as string)}>Delete</button>
+              </article>
+            </section>
+          ))
+      }
 
     </section>
   )

@@ -1,0 +1,17 @@
+.UserForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.UserForm label {
+    font-size: 1.6rem;
+}
+
+
+.UserForm input {
+    height: 2.5rem;
+}
+

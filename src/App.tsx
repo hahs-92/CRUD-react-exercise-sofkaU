@@ -5,6 +5,8 @@ import { UserTable } from "./components/UserTable";
 import { UserForm } from './components/UserForm';
 //data
 import { data } from './data'
+//styles
+import style from './styles/App.module.css'
 
 const initialCurrentUser = {name:"", username:""}
 
@@ -41,19 +43,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>CRUD App with Hooks</h1>
-      <article>
-        <section>
-          <h2>{editing ? "Edit User" : "Add User"}</h2>
+    <div className={style.App}>
+      <h1 className={style.Title}>CRUD App with Hooks</h1>
+      <article className={style.Wrapper}>
+        <section className={style.Form }>
+          <h2 className={style.SubTitle}>{editing ? "Edit User" : "Add User"}</h2>
           {
             !editing
               ?  <UserForm addUser={ addUser}  title='Add user' currentUser={currentUser}/>
               :  <UserForm editUser={ editUser} title='Edit user' currentUser={currentUser}/>
           }
         </section>
-        <section>
-          <h2>View Users</h2>
+        <section className={style.Users}>
+          <h2 className={style.SubTitle}>View Users</h2>
           <UserTable
             users={users}
             deleteUser={deleteUser}
